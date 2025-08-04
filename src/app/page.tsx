@@ -6,7 +6,7 @@ import StarsBackground from '~/components/starsBackground';
 
 
 export default function Home() {
-  const startDate = new Date('2025-06-07T11:11:00-04:00');
+  const startDate = new Date('2025-06-06T11:11:00-04:00');
   const [timePassed, setTimePassed] = useState(getTimeSince(startDate));
 
   useEffect(() => {
