@@ -19,7 +19,7 @@ export default function FunFactToggle() {
       {showExplanation && (
         <section className="mt-8 max-w-md bg-indigo-50 bg-opacity-30 rounded-xl p-4 text-indigo-900 shadow-inner text-center">
           <p>
-            Yes, that's right!
+            Yes, that&apos;s right!
           </p>
 
           <button
