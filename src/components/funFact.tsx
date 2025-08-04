@@ -3,10 +3,10 @@
 import { useState } from 'react';
 
 export default function FunFactToggle() {
- const [showExplanation, setShowExplanation] = useState(false);
+  const [showExplanation, setShowExplanation] = useState(false);
 
   return (
-    <div>
+    <div className="flex flex-col items-center">  {/* Center horizontally */}
       {!showExplanation && (
         <button
           onClick={() => setShowExplanation(true)}
@@ -17,10 +17,9 @@ export default function FunFactToggle() {
       )}
 
       {showExplanation && (
-        <section className="mt-8 max-w-md bg-indigo-50 bg-opacity-30 rounded-xl p-4 text-indigo-900 shadow-inner">
+        <section className="mt-8 max-w-md bg-indigo-50 bg-opacity-30 rounded-xl p-4 text-indigo-900 shadow-inner text-center">
           <p>
-            Fun fact – we always thought we met on the 6th, but it looks like
-            we didn’t actually meet until after midnight!
+            Fun fact – we didn't meet until around 1:11am on the 7th!
           </p>
 
           <button
