@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import FunFact from '~/components/funFact';
+import StarsBackground from '~/components/starsBackground';
+
 
 export default function Home() {
   const startDate = new Date('2025-06-07T01:11:00-04:00');
@@ -15,11 +17,13 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-rose-100 to-indigo-100 p-4 text-center">
-      <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+    <div className="relative min-h-screen overflow-hidden">
+      <StarsBackground />
+      <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-12 text-white">
+      <h1 className="text-4xl md:text-6xl font-bold mb-6">
         Hi Sam 💕
       </h1>
-      <p className="text-lg md:text-xl text-gray-700 mb-8">
+      <p className="text-lg md:text-xl text-white mb-8">
         It’s been...
       </p>
       <div className="text-2xl md:text-3xl font-medium text-indigo-800 bg-white bg-opacity-50 px-6 py-4 rounded-xl shadow-md mb-8">
@@ -35,15 +39,20 @@ export default function Home() {
           .join(', ')}
       </div>
 
-      <p className="text-lg md:text-xl text-gray-700 mb-8">Since the day we met 🌟</p>
+      <p className="text-lg md:text-xl text-white mb-8">Since the day we met 🌟</p>
 
       <FunFact />
 
       <nav className="flex flex-col space-y-2 mt-8">
-        <a href="/comics" className="text-indigo-700 hover:underline"> Comics</a>
-        <a href="/silly-game" className="text-indigo-700 hover:underline">🎮 Silly Game (coming soon)</a>
+        <a
+        href="/comics"
+        className="bg-white text-[#1a1a1a] px-6 py-2 rounded-md font-semibold shadow-md hover:bg-gray-200 transition duration-200 text-center"
+        >
+          Comics
+        </a>
       </nav>
     </main>
+    </div>
   );
 }
 
