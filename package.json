@@ -12,11 +12,13 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "@3d-dice/dice-ui": "^0.5.2",
     "next": "15.4.5",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
   "devDependencies": {
+    "@3d-dice/dice-box": "^1.1.4",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",

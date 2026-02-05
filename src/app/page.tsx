@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import FunFact from '~/components/funFact';
 import StarsBackground from '~/components/starsBackground';
+import PlanetLink from '~/components/PlanetLink';
 
 
 export default function Home() {
@@ -41,16 +41,14 @@ export default function Home() {
 
       <p className="text-lg md:text-xl text-white mb-8">Since the day we met 🌟</p>
 
-      <FunFact />
+      {/* Planet nav */}
+      <section className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-3">
+        <PlanetLink href="/comics" label="Comics" subtitle="our lil archive" hue={170} size={100} showMoon moonSize={16} />
+        <PlanetLink href="/apod" label="NASA APOD" subtitle="picture of the day" size={120} hue={290} />
+        <PlanetLink href="/memories" label="Memories" subtitle="coming soon" hue={35} size={30} showMoon moonOffsetX={90} moonOffsetY={90} />
+      </section>
 
-      <nav className="flex flex-col space-y-2 mt-8">
-        <a
-        href="/comics"
-        className="bg-white text-[#1a1a1a] px-6 py-2 rounded-md font-semibold shadow-md hover:bg-gray-200 transition duration-200 text-center"
-        >
-          Comics
-        </a>
-      </nav>
+
     </main>
     </div>
   );

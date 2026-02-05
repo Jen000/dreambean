@@ -14,6 +14,18 @@ const comics = [
     date: "July 27, 2025",
     alt: "Sam sniffing pillow. Sam has a RAGE",
   },
+  {
+    title: "Ed the Zebra",
+    image: "/comics/late_night.png",
+    date: "June 7, 2025",
+    alt: "Ed interrupts a STEAMY night",
+  },
+  {
+    title: "To boil or not to boil",
+    image: "/comics/pasta.png",
+    date: "January 16, 2026",
+    alt: "Jenna forgets you have to boil pasta water",
+  },
   // add more comics here
 ];
 export default function ComicsPage() {
