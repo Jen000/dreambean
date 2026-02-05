@@ -27,6 +27,15 @@ export default function ApodPage() {
     []
   );
 
+  function toISODate(d: Date) {
+    // Uses the user's local timezone (fine for “today”)
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+
     useEffect(() => {
     const controller = new AbortController();
 
@@ -65,6 +74,9 @@ export default function ApodPage() {
     return () => controller.abort();
     }, [apiKey, date]);
 
+    const today = toISODate(new Date());
+    const isToday = date === today;
+
 
   return (
     <>
@@ -85,6 +97,16 @@ export default function ApodPage() {
             className="w-[190px] rounded-md bg-white/10 px-3 py-2 text-white outline-none ring-1 ring-white/15 focus:ring-2 focus:ring-white/35"
           />
         </label>
+
+        <button
+            type="button"
+            onClick={() => setDate(today)}
+            disabled={isToday}
+            className="rounded-md bg-white/10 px-3 py-2 text-sm text-white ring-1 ring-white/15 transition hover:bg-white/15 disabled:opacity-50 disabled:hover:bg-white/10"
+            >
+            Jump to Today
+        </button>
+
       </div>
 
       <div className="rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
