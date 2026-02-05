@@ -27,41 +27,44 @@ export default function ApodPage() {
     []
   );
 
-  useEffect(() => {
-    let cancelled = false;
+    useEffect(() => {
+    const controller = new AbortController();
 
     async function load() {
-      setLoading(true);
-      setErr(null);
+        setLoading(true);
+        setErr(null);
 
-      try {
-        const params = new URLSearchParams({
-          api_key: apiKey,
-          date,
-        });
+        try {
+        const params = new URLSearchParams({ api_key: apiKey, date });
+        const res = await fetch(
+            `https://api.nasa.gov/planetary/apod?${params.toString()}`,
+            { signal: controller.signal, cache: 'no-store' }
+        );
 
-        const res = await fetch(`https://api.nasa.gov/planetary/apod?${params.toString()}`);
         if (!res.ok) {
-          const text = await res.text();
-          throw new Error(`NASA API error (${res.status}): ${text}`);
+            const text = await res.text();
+            throw new Error(`NASA API error (${res.status}): ${text}`);
         }
 
         const json = (await res.json()) as ApodResponse;
-        if (!cancelled) setData(json);
-      } catch (e: unknown) {
-        if (!cancelled) {
-            const message =
+        setData(json);
+        } catch (e: unknown) {
+        // Ignore abort errors (happen on navigation/unmount)
+        if (e instanceof DOMException && e.name === 'AbortError') return;
+
+        const message =
             e instanceof Error ? e.message : 'Something went wrong fetching APOD.';
-            setErr(message);
-        }
+        setErr(message);
+        } finally {
+        // IMPORTANT: always clear loading
+        setLoading(false);
         }
     }
 
     load();
-    return () => {
-      cancelled = true;
-    };
-  }, [apiKey, date]);
+    return () => controller.abort();
+    }, [apiKey, date]);
+
 
   return (
     <>
@@ -150,9 +153,6 @@ export default function ApodPage() {
         )}
       </div>
 
-      <p className="mt-6 text-xs text-white/50">
-        Tip: If you hit rate limits, add your own NASA API key as NEXT_PUBLIC_NASA_API_KEY.
-      </p>
     </main>
     </>
   );
