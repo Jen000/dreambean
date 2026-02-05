@@ -32,18 +32,19 @@ export default function PlanetLink({
     ? `${sizePx}px`
     : 'clamp(110px, 22vw, 170px)';
 
+    const styleVars = {
+    '--planet': size,
+    '--hue': hue,
+    } as React.CSSProperties;
+
   return (
+
+    
     <Link
       href={href}
       aria-label={label}
       className="group relative flex flex-col items-center gap-3 outline-none select-none"
-      style={
-        {
-          // CSS variables let Moon + planet scale together
-          ['--planet' as any]: size,
-          ['--hue' as any]: hue,
-        } as React.CSSProperties
-      }
+      style={styleVars}
     >
       <div
         className="
