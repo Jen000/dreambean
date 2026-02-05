@@ -48,11 +48,13 @@ export default function ApodPage() {
 
         const json = (await res.json()) as ApodResponse;
         if (!cancelled) setData(json);
-      } catch (e: any) {
-        if (!cancelled) setErr(e?.message || 'Something went wrong fetching APOD.');
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
+      } catch (e: unknown) {
+        if (!cancelled) {
+            const message =
+            e instanceof Error ? e.message : 'Something went wrong fetching APOD.';
+            setErr(message);
+        }
+        }
     }
 
     load();
