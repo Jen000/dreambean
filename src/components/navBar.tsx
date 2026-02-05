@@ -40,7 +40,7 @@ export default function NavBar() {
         <Link href="/">
           <button
             type="button"
-            className="px-4 py-2 rounded-lg shadow transition-colors duration-200 text-white"
+            className="px-4 py-2 rounded-lg shadow transition-colors duration-200 text-white hover:bg-[#4a3223] cursor-pointer"
             style={{
               backgroundColor: theme.button,
             }}

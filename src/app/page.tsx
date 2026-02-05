@@ -6,7 +6,7 @@ import PlanetLink from '~/components/PlanetLink';
 
 
 export default function Home() {
-  const startDate = new Date('2025-06-06T23:11:00-04:00');
+  const startDate = new Date('2025-06-07T03:11:00Z');
   const [timePassed, setTimePassed] = useState(getTimeSince(startDate));
 
   useEffect(() => {
@@ -42,11 +42,16 @@ export default function Home() {
       <p className="text-lg md:text-xl text-white mb-8">Since the day we met 🌟</p>
 
       {/* Planet nav */}
-      <section className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-3">
-        <PlanetLink href="/comics" label="Comics" subtitle="our lil archive" hue={170} size={100} showMoon moonSize={16} />
-        <PlanetLink href="/apod" label="NASA APOD" subtitle="picture of the day" size={120} hue={290} />
-        <PlanetLink href="/memories" label="Memories" subtitle="coming soon" hue={35} size={30} showMoon moonOffsetX={90} moonOffsetY={90} />
+      <section className="mt-10 grid grid-cols-2 gap-8 sm:gap-10 md:grid-cols-2">
+        <div className="md:translate-y-6">
+          <PlanetLink href="/comics" label="Comics" subtitle="our lil archive" hue={140} sizePx={80} showMoon />
+        </div>
+
+        <div className="md:-translate-y-2">
+          <PlanetLink href="/apod" label="NASA APOD" subtitle="picture of the day" hue={200} sizePx={120} />
+        </div>
       </section>
+
 
 
     </main>
